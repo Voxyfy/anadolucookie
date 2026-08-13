@@ -1,0 +1,76 @@
+{
+  "name": "@voxyfy/anadolucookie",
+  "version": "0.1.0",
+  "description": "KVKK ve GDPR uyumlu, çok dilli (tr/en + özel diller), framework-bağımsız çerez rıza (cookie consent) banner'ı — kabul edilmeyen kategorilere ait script'leri otomatik engeller, sıfır dış bağımlılık, sıfır ağ çağrısı (Node.js/TypeScript, tarayıcı için)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs,iife --global-name AnadoluCookie --dts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "kvkk",
+    "kvkk cookie",
+    "kvkk çerez",
+    "cookie consent",
+    "cookie consent banner",
+    "consent management",
+    "cerez",
+    "cerez onay",
+    "cerez rizasi",
+    "cerez politikasi",
+    "cerez bildirimi",
+    "rıza yönetimi",
+    "acik riza",
+    "gdpr",
+    "gdpr cookie banner",
+    "cookie banner",
+    "cookie widget",
+    "cookie popup",
+    "privacy",
+    "kişisel verilerin korunması",
+    "script blocking",
+    "google consent mode",
+    "turkey",
+    "türkiye",
+    "nodejs",
+    "typescript",
+    "javascript",
+    "vanilla js",
+    "react",
+    "framework agnostic",
+    "i18n",
+    "multi language"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Voxyfy/anadolucookie.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "jsdom": "^25.0.0",
+    "tsup": "^8.2.4",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

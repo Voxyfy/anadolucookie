@@ -160,7 +160,45 @@ createAnadoluCookie({
 
 Hazır `theme` (`'light'`/`'dark'`) size uymuyorsa, `style` ile tek tek
 renkleri ve köşe yuvarlaklığını marka renklerinize göre değiştirebilir,
-`className` ile de kendi CSS'inizden tam kontrol alabilirsiniz:
+`className` ile de kendi CSS'inizden tam kontrol alabilirsiniz.
+
+Her `style` alanı, banner'ın belirli bir parçasını değiştirir — hangi
+alanı verirseniz tam olarak orası değişir, verilmeyen alanlar seçili
+`theme`'in varsayılanında kalır:
+
+| `style` alanı | CSS değişkeni | Bunu değiştirirseniz banner'da şu değişir |
+|---|---|---|
+| `background` | `--ac-bg` | Panelin arka plan rengi ve switch topuzunun rengi |
+| `text` | `--ac-fg` | Başlık, buton metni (dolgusuz butonlarda) ve genel yazı rengi |
+| `border` | `--ac-border` | Panelin dış çizgisi, buton kenarlıkları, switch'in kapalı hâldeki rengi |
+| `mutedText` | `--ac-muted` | Açıklama metni ve kategori alt açıklamalarının (soluk) rengi |
+| `accent` | `--ac-accent` | "Tümünü Kabul Et" butonunun arka planı ve açık (onaylı) switch'lerin rengi |
+| `accentText` | `--ac-accent-fg` | "Tümünü Kabul Et" butonunun üzerindeki yazı rengi |
+| `borderRadius` | `--ac-radius` | Panelin ve butonların köşe yuvarlaklığı (`0px` = tamamen köşeli) |
+
+**Örnek A — sadece marka rengini değiştirmek:** aşağıdaki gibi sadece
+`accent` verirseniz, geri kalan her şey (arka plan, yazı, kenarlık) seçili
+`theme`'den gelir, sadece "Tümünü Kabul Et" butonu ve onaylı switch'ler
+turuncu olur:
+
+```ts
+createAnadoluCookie({
+  theme: 'light',
+  style: { accent: '#ff5a1f', accentText: '#ffffff' },
+}).init();
+```
+
+**Örnek B — köşeli/keskin bir görünüme geçmek:** sadece `borderRadius`
+verirseniz, panel ve butonlardaki yuvarlak köşeler tamamen kaybolur,
+diğer her şey aynı kalır:
+
+```ts
+createAnadoluCookie({
+  style: { borderRadius: '0px' },
+}).init();
+```
+
+**Örnek C — tüm renk paletini kendi markanıza göre baştan tanımlamak:**
 
 ```ts
 createAnadoluCookie({
@@ -179,9 +217,10 @@ createAnadoluCookie({
 ```
 
 `style`'a hiç dokunmadan da doğrudan kendi CSS'inizle tüm görünümü
-değiştirebilirsiniz — kütüphane her rengi bir CSS custom property
-(`--ac-bg`, `--ac-fg`, `--ac-border`, `--ac-muted`, `--ac-accent`,
-`--ac-accent-fg`, `--ac-radius`) olarak dışa açar:
+değiştirebilirsiniz — yukarıdaki tablodaki CSS değişkenlerinin hepsini
+kendi stylesheet'inizde `className` ile verdiğiniz sınıfın üzerine
+yazabilirsiniz; bu, `style` config'iyle tamamen aynı sonucu üretir, sadece
+TypeScript nesnesi yerine CSS ile yazılmıştır:
 
 ```css
 .sirketim-cerez-banner {

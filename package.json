@@ -1,6 +1,6 @@
 {
   "name": "@voxyfy/anadolucookie",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "KVKK ve GDPR uyumlu, çok dilli (tr/en + özel diller), framework-bağımsız çerez rıza (cookie consent) banner'ı — kabul edilmeyen kategorilere ait script'leri otomatik engeller, sıfır dış bağımlılık, sıfır ağ çağrısı (Node.js/TypeScript, tarayıcı için)",
   "license": "MIT",
   "type": "module",

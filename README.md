@@ -1,5 +1,9 @@
 # @voxyfy/anadolucookie — KVKK/GDPR Uyumlu Çerez Rıza (Cookie Consent) Banner Kütüphanesi
 
+<p align="center">
+  <img src=".github/banner.png" alt="anadolucookie" width="640">
+</p>
+
 **anadolucookie**, web sitenizin sağ/sol alt köşesinde çıkan, ziyaretçiden
 çerez kullanımı için açık rıza (KVKK madde 5, GDPR madde 6) alan; kabul
 edilmeyen kategorilere ait üçüncü taraf script'lerin (Google Analytics,

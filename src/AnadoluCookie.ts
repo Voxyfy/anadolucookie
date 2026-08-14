@@ -57,6 +57,7 @@ export class AnadoluCookie {
       container,
       this.config.style,
       this.config.className,
+      this.config.classNames,
     );
     this.banner.mount();
   }

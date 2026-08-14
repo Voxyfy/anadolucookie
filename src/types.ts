@@ -23,6 +23,29 @@ export interface AnadoluCookieStyle {
   borderRadius?: string;
 }
 
+/**
+ * Banner'ın her bir parçasına eklenecek ek CSS sınıfları — Tailwind gibi
+ * bir utility-first framework kullanıyorsanız, kütüphanenin dahili
+ * görünümünü değiştirmeden istediğiniz parçaya kendi utility class'larınızı
+ * (`shadow-2xl`, `backdrop-blur`, `hover:opacity-90` vb.) ekleyebilirsiniz.
+ * Her alan isteğe bağlıdır, verilmeyen parçalar dahili varsayılan
+ * görünümde kalır.
+ */
+export interface AnadoluCookieClassNames {
+  root?: string;
+  panel?: string;
+  title?: string;
+  description?: string;
+  categories?: string;
+  category?: string;
+  categoryLabel?: string;
+  categoryDescription?: string;
+  switch?: string;
+  actions?: string;
+  button?: string;
+  buttonPrimary?: string;
+}
+
 export interface AnadoluCookieCategory {
   key: string;
   label: string;
@@ -79,6 +102,8 @@ export interface AnadoluCookieConfig {
   style?: AnadoluCookieStyle;
   /** Banner köküne eklenecek ek bir CSS sınıfı — kendi stylesheet'inizden tam kontrol için. */
   className?: string;
+  /** Banner'ın panel/başlık/buton gibi tek tek parçalarına eklenecek Tailwind vb. utility class'ları. */
+  classNames?: AnadoluCookieClassNames;
   storageKey?: string;
   container?: HTMLElement;
   onChange?: (state: ConsentState) => void;

@@ -234,6 +234,32 @@ TypeScript nesnesi yerine CSS ile yazılmıştır:
 }
 ```
 
+### Örnek 6.2 — Tailwind CSS ile kullanım (`classNames`)
+
+Varsayılan görünüm zaten Tailwind'in `slate` renk paletine ve `rounded-xl`
+(12px) köşe yuvarlaklığına yakın tasarlandı; çoğu Tailwind tabanlı sitede
+`style`'a hiç dokunmadan da uyumlu görünür. Ama panel/başlık/buton gibi
+tek tek parçalara kendi Tailwind utility class'larınızı eklemek isterseniz
+`classNames` kullanın — kütüphanenin dahili sınıflarını **silmez**, sizin
+verdiğiniz class'ları onların yanına ekler:
+
+```ts
+createAnadoluCookie({
+  classNames: {
+    panel: 'shadow-2xl ring-1 ring-black/5 backdrop-blur-sm',
+    title: 'font-semibold tracking-tight',
+    description: 'text-slate-500',
+    button: 'transition-colors',
+    buttonPrimary: 'hover:opacity-90 active:opacity-100 shadow-sm',
+    switch: 'shadow-inner',
+  },
+}).init();
+```
+
+`classNames`'te olmayan bir parça (örn. `categories`, `actions`) verilmezse
+o parça dahili varsayılan görünümünde kalır — hepsini birden doldurmanız
+gerekmez, sadece değiştirmek istediğiniz kısımları verin.
+
 ### Örnek 7 — "Çerez tercihlerini yönet" bağlantısı (footer'a koymak için)
 
 KVKK, kullanıcının tercihini daha sonra değiştirebilmesini gerektirir.
@@ -410,6 +436,7 @@ isterseniz `cookie.getConsentRecord()` ile de erişebilirsiniz.
 | `theme` | `string` | `'light'` | `'light'` \| `'dark'` |
 | `style` | `object` | — | `{ background, text, border, mutedText, accent, accentText, borderRadius }` — seçili temanın renklerini/köşe yuvarlaklığını tek tek geçersiz kılar, bkz. [Örnek 6.1](#örnek-61--tasarımı-markanıza-göre-özelleştirmek). |
 | `className` | `string` | — | Banner köküne eklenecek ek CSS sınıfı — kendi stylesheet'inizden tam kontrol için. |
+| `classNames` | `object` | — | `{ root, panel, title, description, categories, category, categoryLabel, categoryDescription, switch, actions, button, buttonPrimary }` — Tailwind gibi bir utility-first framework kullanıyorsanız, tek tek parçalara eklemek istediğiniz class'lar. Bkz. [Örnek 6.2](#örnek-62--tailwind-css-ile-kullanım-classnames). |
 | `version` | `number` | `1` | Değiştirildiğinde eski rızalar geçersiz sayılır. |
 | `storageKey` | `string` | `'anadolucookie_consent'` | `localStorage` anahtarı — aynı sitede birden fazla örnek çalıştırıyorsanız değiştirin. |
 | `container` | `HTMLElement` | `document.body` | Banner'ın ekleneceği DOM elemanı. |

@@ -171,4 +171,30 @@ describe('AnadoluCookie', () => {
     expect(root.style.getPropertyValue('--ac-accent')).toBe('#ff0000');
     expect(root.style.getPropertyValue('--ac-radius')).toBe('0px');
   });
+
+  it('classNames ile verilen Tailwind vb. sınıflar ilgili parçalara eklenir', () => {
+    const cookie = createAnadoluCookie({
+      classNames: {
+        panel: 'shadow-2xl backdrop-blur',
+        buttonPrimary: 'hover:opacity-90',
+        title: 'tracking-tight',
+      },
+    });
+    cookie.init();
+
+    expect(document.querySelector('.anadolucookie-panel.shadow-2xl.backdrop-blur')).not.toBeNull();
+    expect(document.querySelector('.anadolucookie-title.tracking-tight')).not.toBeNull();
+    const primaryButtons = Array.from(document.querySelectorAll('.anadolucookie-btn.primary'));
+    expect(primaryButtons.every((b) => b.classList.contains('hover:opacity-90'))).toBe(true);
+  });
+
+  it('classNames.button verilmeyen normal (primary olmayan) butonlara da eklenir', () => {
+    const cookie = createAnadoluCookie({
+      classNames: { button: 'font-medium' },
+    });
+    cookie.init();
+
+    const rejectBtn = Array.from(document.querySelectorAll('button')).find((b) => b.textContent === 'Tümünü Reddet')!;
+    expect(rejectBtn.classList.contains('font-medium')).toBe(true);
+  });
 });
